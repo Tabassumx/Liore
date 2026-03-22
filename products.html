@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liore - Product Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-in {
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+ 
+    .image {
+  width: 250px;
+  height: auto;
+  margin-left: auto; /* Pushes the image to the right */
+  display: block;    /* Ensures margin-left:auto works */
+}
+body {
+  overflow-y: auto;
+}
+
+
+
+    /* Sidebar Custom Styling */
+ /* .sidebar {
+      width: 250px;
+      background-color: #05113a;
+      color: white;
+      padding-top: 20px;
+      padding-left: 20px;
+      position:fixed;
+      height: 100%;
+      top: 0;
+      left: 0;
+      transition: all 0.3s ease-in-out;
+    }  */
+   /* .sidebar{
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 250px;
+      height: calc(100% - 80px);
+      background: #021249;
+      padding: 20px;
+      overflow-y: auto;
+      z-index: 99;
+     
+    }*/
+    .sidebar {
+    width: 250px;
+    background-color: #05113a;
+    color: white;
+    padding-top: 20px;
+    padding-left: 20px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    max-height: 100vh; /* Set maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    transition: all 0.3s ease-in-out;
+}
+
+    .sidebar a {
+      font-size: 1.1rem;
+      color: #ecf0f1;
+      text-decoration: none;
+      padding: 12px 20px;
+      display: block;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      transition: 0.3s ease;
+    }
+  
+
+/*.sidebar {
+  width: 250px;
+  background-color: #05113a;
+  color: white;
+  padding-top: 20px;
+  padding-left: 20px;
+  min-height: 100vh;
+  flex-shrink: 0;
+}*/
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color: #0c1f5e;
+      color: #fff;
+      transform: translateX(5px);
+    }
+
+    /* Adjust product section */
+    .product-section img {
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .product-section img:hover {
+      transform: scale(1.05);
+    }
+
+    .product-description {
+      color: #7f8c8d;
+      font-size: 1rem;
+    }
+
+    .product-title {
+      color: #34495e;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .product-list li {
+      font-size: 1rem;
+      color: #7f8c8d;
+    }
+    .logo{
+        width:80px;
+        height:auto;
+        margin-right:20px;
+    }
+    /* Enable smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+
+    /* Custom scrollbar for WebKit browsers (Chrome, Safari) */
+.sidebar::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #05113a; /* Background of the scrollbar track */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #001f3f; /* Navy blue color for the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #0c1f5e; /* Color of the thumb on hover */
+}
+
+/* Custom scrollbar for Firefox */
+.sidebar {
+    scrollbar-width: thin; /* Make scrollbar thin */
+    scrollbar-color: #001f3f #05113a; /* Thumb color and track color */
+}
+
+
+  </style>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+
+
+  <header class="sticky top-0 z-50 flex justify-between items-center px-6 py-4 bg-white shadow-md backdrop-blur-lg bg-white/90">
+    <div class="flex items-center">
+      <img class="logo" src="pnp.png" alt="Liore Logo" />
+    </div>
+  
+    <!-- Desktop Navigation -->
+    <nav class="space-x-6 hidden md:flex">
+      <a href="index.html" class="text-gray-600 hover:text-blue-700">Home</a>
+      <a href="products.html" class="text-gray-600 hover:text-blue-700">Products</a>
+      <a href="aboutus.html" class="text-gray-600 hover:text-blue-700">About</a>
+      <a href="index.html#contact" class="text-gray-600 hover:text-blue-700">Contact</a>
+    </nav>
+  
+    <!-- Desktop Buttons -->
+    <div class="space-x-4 hidden md:flex">
+      <a href="SignUp_LogIn_Form.html" class="px-4 py-2 border border-[#0b2774] text-[#0b2774] rounded hover:bg-[#0f349b] hover:text-white transition">Login</a>
+      <a href="SignUp_LogIn_Form.html" class="px-4 py-2 bg-[#0b2774] text-white rounded hover:bg-[#0f349b] transition">Sign Up</a>
+    </div>
+  
+    <!-- Mobile Menu Button -->
+    <button id="menu-toggle" class="md:hidden text-gray-600 text-2xl">☰</button>
+  </header>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden flex flex-col items-center bg-white shadow-md px-6 py-4 md:hidden space-y-4">
+    <a href="index.html" class="text-gray-600 hover:text-blue-700">Home</a>
+    <a href="products.html" class="text-gray-600 hover:text-blue-700">Products</a>
+    <a href="aboutus.html" class="text-gray-600 hover:text-blue-700">About</a>
+    <a href="index.html#contact" class="text-gray-600 hover:text-blue-700">Contact</a>
+    <a href="SignUp_LogIn_Form.html" class="w-full text-center px-4 py-2 border border-[#0b2774] text-[#0b2774] rounded hover:bg-[#0f349b] hover:text-white transition">Login</a>
+    <a href="SignUp_LogIn_Form.html" class="w-full text-center px-4 py-2 bg-[#0b2774] text-white rounded hover:bg-[#0f349b] transition">Sign Up</a>
+  </div>
+  
+  <!-- JavaScript -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+  
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+  
+  
+    <!-- Sidebar content goes here -->
+  
+
+  <!-- Main Content -->
+  <div class="flex pt-20">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="text-2xl font-bold mb-8">..</div>
+      <nav>
+        <a href="#cleanser">Cleansers</a>
+        <a href="#tonner">Tonners</a>
+        <a href="#serum"> Ampoules/serums  </a>
+        <a href="#moist">  Moisturizer </a>
+        <a href="#sun"> Sun Protection   </a>
+        <a href="#eczema">Eczema Relief Cream</a>
+        <a href="#cancer">Cancer Relief Cream</a>
+        <a href="#psoriasis">Psoriasis Support Cream</a>
+        <a href="#sensitive-skin">Sensitive Skin Cream</a>
+      </nav>
+    </aside></div>
+
+    <!-- Product Sections -->
+    <main class="flex-1 px-6 py-12 ml-64 space-y-16">
+      
+
+      <!-- Products Heading -->
+<section class="text-center fade-in mb-12">
+  <h1 class="text-4xl md:text-5xl font-bold text-[#0b2774]">Our Products</h1>
+  <p class="mt-2 text-lg text-gray-600 italic">Gentle Care for Every Skin Journey</p>
+</section>
+
+
+      <!-- Cleanser -->
+<div id="cleanser" class="product-section flex flex-col md:flex-row items-center gap-8 fade-in">
+  <div class="md:w-1/2">
+    <h2 class="product-title">Liore Gentle Face Cleanser</h2>
+    <p class="mt-4 product-description">A sulfate-free cleanser formulated to gently remove dirt, oil, and makeup without stripping the skin of its natural moisture.</p>
+    <ul class="mt-4 list-disc pl-5 text-gray-600 product-list">
+      <li>pH-balanced and soap-free</li>
+      <li>Infused with cucumber and green tea extract</li>
+      <li>Suitable for all skin types, including sensitive skin</li>
+    </ul>
+    <div class="mt-4 space-x-4">
+      <button class="px-4 py-2 bg-[#0b2774] text-white rounded hover:bg-[#0f349b] transition">Add to Cart</button>
+      <button class="px-4 py-2 border border-[#0b2774] text-[#0b2774] rounded hover:bg-[#0f349b] hover:text-white transition">Buy Now</button>
+    </div>
+    
+  </div>
+  <img src="clean.png" alt="Cleanser" class="image" />
+</div>
+  
+<!-- Toner -->
+<div id="tonner" class="product-section flex flex-col md:flex-row items-center gap-8 fade-in">
+  <div class="md:w-1/2">
+    <h2 class="product-title">Liore Hydrating Toner</h2>
+    <p class="mt-4 product-description">A refreshing toner that balances your skin’s pH, tightens pores, and prepares it for the next steps in your skincare routine.</p>
+    <ul class="mt-4 list-disc pl-5 text-gray-600 product-list">
+      <li>Alcohol-free and non-irritating</li>
+      <li>Contains hyaluronic acid and rose water</li>
+      <li>Instantly soothes and revives tired skin</li>
+    </ul>
+    <div class="mt-4 space-x-4">
+      <button class="px-4 py-2 bg-[#0b2774] text-white rounded hover:bg-[#0f349b] transition">Add to Cart</button>
+      <button class="px-4 py-2 border border-[#0b2774] text-[#0b2774] rounded hover:bg-[#0f349b] hover:text-white transition">Buy Now</button>
+    </div>
+    
+  </div>
+  <img src="tonner.png" alt="Toner" class="image" />
+</div>
+
+
+<!-- Serum -->
+<div id="serum" class="product-section flex flex-col md:flex-row items-center gap-8 fade-in">
+  <div class="md:w-1/2">
+    <h2 class="product-title">Liore Intensive Repair Serum</h2>
+    <p class="mt-4 product-description">This concentrated serum targets fine lines, dullness, and uneven skin tone while boosting hydration and collagen production.</p>
+    <ul class="mt-4 list-disc pl-5 text-gray-600 product-list">
+      <li>Formulated with niacinamide and peptides</li>
+      <li>Fast-absorbing, non-greasy texture</li>
+      <li>Ideal for nighttime repair routines</li>
+    </ul>
+    <div class="mt-4 space-x-4">
+      <button class="px-4 py-2 bg-[#0b2774] text-white rounded hover:bg-[#0f349b] transition">Add to Cart</button>
+      <button class="px-4 py-2 border border-[#0b2774] text-[#0b2774] rounded hover:bg-[#0f349b] hover:text-white transition">Buy Now</button>
+    </div>
+    
+  </div>
+  <img src="amp.png" alt="Serum" class="image" />
+</div>
+
+
+<!-- Moisturizer -->
+<div id="moist" class="product-section flex flex-col md:flex-row items-center gap-8 fade-in">
+  <div class="md:w-1/2">
+    <h2 class="product-title">Liore Deep Moisture Cream</h2>
+    <p class="mt-4 product-description">An ultra-hydrating moisturizer designed to nourish, protect, and restore the skin barrier without clogging pores.</p>
+    <ul class="mt-4 list-disc pl-5 text-gray-600 product-list">
+      <li>Contains ceramides and glycerin</li>
+      <li>Non-comedogenic and dermatologist-approved</li>
+      <li>Perfect for dry or dehydrated skin</li>
+    </ul>
+    <div class="mt-4 space-x-4">
+      <button class="px-4 py-2 bg-[#0b2774] text-white rounded hover:bg-[#0f349b] transition">Add to Cart</button>
+      <button class="px-4 py-2 border border-[#0b2774] text-[#0b2774] rounded hover:bg-[#0f349b] hover:text-white transition">Buy Now</button>
+    </div>
+    
+  </div>
+  <img src="https://via.placeholder.com/250x250?text=Moisturizer" alt="Moisturizer" class="image" />
+</div>
+
+
+<!-- Sun Protection -->
+<div id="sun" class="product-section flex flex-col md:flex-row items-center gap-8 fade-in">
+  <div class="md:w-1/2">
+    <h2 class="product-title">Liore Mineral Sunscreen SPF 50</h2>
+    <p class="mt-4 product-description">A broad-spectrum SPF 50 sunscreen that shields skin from harmful UV rays using 100% mineral filters. Lightweight and non-irritating.</p>
+    <ul class="mt-4 list-disc pl-5 text-gray-600 product-list">
+      <li>Reef-safe and fragrance-free</li>
+      <li>Leaves no white cast</li>
+      <li>Water-resistant up to 80 minutes</li>
+    </ul>
+    <div class="mt-4 space-x-4">
+      <button class="px-4 py-2 bg-[#0b2774] text-white rounded hover:bg-[#0f349b] transition">Add to Cart</button>
+      <button class="px-4 py-2 border border-[#0b2774] text-[#0b2774] rounded hover:bg-[#0f349b] hover:text-white transition">Buy Now</button>
+    </div>
+    
+  </div>
+  <img src="https://via.placeholder.com/250x250?text=Sunscreen" alt="Sunscreen" class="image" />
+</div>
+
+
+      <!-- Eczema Cream -->
+      <div id="eczema" class="product-section flex flex-col md:flex-row items-center gap-8 fade-in">
+        <div class="md:w-1/2">
+          <h2 class="product-title">Liore Eczema Relief Cream</h2>
+          <p class="mt-4 product-description">Designed specifically for eczema-prone skin, this cream reduces itchiness, inflammation, and redness while deeply hydrating and restoring the skin barrier.</p>
+          <ul class="mt-4 list-disc pl-5 text-gray-600 product-list">
+            <li>Hypoallergenic and fragrance-free</li>
+            <li>Dermatologist tested</li>
+            <li>Infused with chamomile and colloidal oatmeal</li>
+          </ul>
+          <div class="mt-4 space-x-4">
+            <button class="px-4 py-2 bg-[#0b2774] text-white rounded hover:bg-[#0f349b] transition">Add to Cart</button>
+            <button class="px-4 py-2 border border-[#0b2774] text-[#0b2774] rounded hover:bg-[#0f349b] hover:text-white transition">Buy Now</button>
+          </div>
+          
+        </div>
+        <img src="https://via.placeholder.com/250x250?text=Eczema+Cream" alt="Eczema Cream" class="image" />
+      </div>
+
+      <!-- Cancer Relief Cream -->
+      <div id="cancer" class="product-section flex flex-col md:flex-row items-center gap-8 fade-in">
+        <div class="md:w-1/2">
+          <h2 class="product-title">Liore Cancer Relief Cream</h2>
+          <p class="mt-4 product-description">A soothing formula for patients undergoing chemotherapy or radiation therapy. It calms and heals sensitive, irritated skin while preventing dryness and peeling.</p>
+          <ul class="mt-4 list-disc pl-5 text-gray-600 product-list">
+            <li>Enriched with calendula and aloe vera</li>
+            <li>Clinically proven hydration</li>
+            <li>Free of parabens and synthetic dyes</li>
+          </ul>
+          <div class="mt-4 space-x-4">
+            <button class="px-4 py-2 bg-[#0b2774] text-white rounded hover:bg-[#0f349b] transition">Add to Cart</button>
+            <button class="px-4 py-2 border border-[#0b2774] text-[#0b2774] rounded hover:bg-[#0f349b] hover:text-white transition">Buy Now</button>
+          </div>
+          
+        </div>
+        <img src="https://via.placeholder.com/250x250?text=Cancer+Relief+Cream" alt="Cancer Relief Cream" class="image" />
+      </div>
+
+      <!-- Psoriasis Cream -->
+      <div id="psoriasis" class="product-section flex flex-col md:flex-row items-center gap-8 fade-in">
+        <div class="md:w-1/2">
+          <h2 class="product-title">Liore Psoriasis Support Cream</h2>
+          <p class="mt-4 product-description">Relieves itching and flaking associated with psoriasis. This cream contains natural extracts that soothe, moisturize, and reduce scaling on affected areas.</p>
+          <ul class="mt-4 list-disc pl-5 text-gray-600 product-list">
+            <li>Contains salicylic acid and shea butter</li>
+            <li>Non-steroidal, gentle formula</li>
+            <li>Safe for daily use</li>
+          </ul>
+          <div class="mt-4 space-x-4">
+            <button class="px-4 py-2 bg-[#0b2774] text-white rounded hover:bg-[#0f349b] transition">Add to Cart</button>
+            <button class="px-4 py-2 border border-[#0b2774] text-[#0b2774] rounded hover:bg-[#0f349b] hover:text-white transition">Buy Now</button>
+          </div>
+          
+        </div>
+        <img src="https://via.placeholder.com/250x250?text=Psoriasis+Cream" alt="Psoriasis Cream" class="image" />
+      </div>
+
+      <!-- Sensitive Skin Cream -->
+      <div id="sensitive-skin" class="product-section flex flex-col md:flex-row items-center gap-8 fade-in">
+        <div class="md:w-1/2">
+          <h2 class="product-title">Liore Sensitive Skin Cream</h2>
+          <p class="mt-4 product-description">Perfect for daily hydration of delicate or allergy-prone skin. Gentle yet effective, providing lasting comfort and moisture without irritation.</p>
+          <ul class="mt-4 list-disc pl-5 text-gray-600 product-list">
+            <li>No artificial fragrances or colors</li>
+            <li>Fortified with vitamin E and jojoba oil</li>
+            <li>Recommended by dermatologists</li>
+          </ul>
+          <div class="mt-4 space-x-4">
+            <button class="px-4 py-2 bg-[#0b2774] text-white rounded hover:bg-[#0f349b] transition">Add to Cart</button>
+            <button class="px-4 py-2 border border-[#0b2774] text-[#0b2774] rounded hover:bg-[#0f349b] hover:text-white transition">Buy Now</button>
+          </div>
+          
+        </div>
+        <img src="https://via.placeholder.com/250x250?text=Sensitive+Skin+Cream" alt="Sensitive Skin Cream" class="image" />
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white py-8 border-t fade-in">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-gray-600">Follow us on social media @liore</p>
+     <!--- <p class="text-sm text-gray-400 mt-2">© 2025 Liore. All rights reserved.</p>-->
+    </div>
+  </footer>
+
+  <script>
+   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const targetId = this.getAttribute('href').substring(1); // Get the target ID (remove '#')
+    const targetElement = document.getElementById(targetId);
+    const offset = 100; // Adjust this value to match your header height
+
+    window.scrollTo({
+      top: targetElement.offsetTop - offset,
+      behavior: 'smooth'
+    });
+  });
+});
+
+  </script>
+</body>
+</html>
